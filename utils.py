@@ -1,6 +1,13 @@
-class Base:
+from abc import ABC,abstractmethod
+
+class Base(ABC):
     def __init__(self,id):
         self.id=id
+    @abstractmethod
+    def to_dict(self):pass
+    @abstractmethod
+    @classmethod
+    def from_dict(cls,data):pass
 
 class User:
     def __init__(self, username, password):

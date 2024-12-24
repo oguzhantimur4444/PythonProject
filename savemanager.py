@@ -23,3 +23,4 @@ class SaveManager:
     def AddPersonel(self,uName,psw,brm,ytk):
         self.personeller.append(Personel(self.mPersonelId,uName,psw,brm,ytk))
         self.mPersonelId+=1
+        self.Save()
