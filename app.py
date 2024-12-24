@@ -4,8 +4,8 @@ from utils import *
 sm=SaveManager()
 
 if len(sm.personeller) ==0:
-    print("Bir root kullanıcı gereklidir")
-    psw = input("şifre: ")
+    print("Bir root kullanici gereklidir")
+    psw="123"
     sm.AddPersonel("root",psw,"ANY",True)
 
 sm.AddPersonel("test","1234","Yok",False)
