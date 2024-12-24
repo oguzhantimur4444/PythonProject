@@ -15,7 +15,16 @@ class User:
         self.password=password
 
 class Request(Base):
-    def __init__(self, id, name, type, mail, personelId, definition):
+    maxID=0
+    def __init__(self, name, type, mail, personelId, definition, id:int = None):
+        if id==None:
+            id=Request.maxID
+            Request.maxID+=1
+        elif id>Request.maxID:
+            Request.maxID=id+1
+        elif Request.maxID==id:
+            id+=1
+        
         super().__init__(id)
         self.name=name
         self.type=type
