@@ -98,7 +98,9 @@
         <div>Dashboard</div>
         <div>
             <a href="#">Yeni Talep</a>
+            {% if admin %}
             <a href="#">Personelleri Düzenle</a>
+            {% endif %}
         </div>
     </div>
 
@@ -114,46 +116,18 @@
                 </tr>
             </thead>
             <tbody>
+                {% for i in requests %}
                 <tr>
-                    <td>Test</td>
-                    <td>sada</td>
-                    <td>0</td>
-                    <td>Sıkıntısız</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.type }}</td>
+                    <td>{{ i.personelId }}</td>
+                    <td>{{ i.definition }}</td>
                     <td>
                         <button class="btn btn-primary">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>saasdda</td>
-                    <td>1</td>
-                    <td>asdas</td>
-                    <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>asda</td>
-                    <td>1</td>
-                    <td>sdsd</td>
-                    <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>adasdad</td>
-                    <td>sada</td>
-                    <td>0</td>
-                    <td>Sıkıntısız</td>
-                    <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
