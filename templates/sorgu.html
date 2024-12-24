@@ -4,12 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorgula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .info {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-    <form action="{{ url_for('queryPage') }}" method="post">
-        <label for="takipNo">Takip No</label>
-        <input type="text" name="takipNo">
-        <input type="submit">
-    </form>
+    <div class="form-container">
+        <h1>Takip No ile Sorgula</h1>
+        <form action="{{ url_for('queryPage') }}" method="post">
+            <label for="takipNo">Takip No</label>
+            <input type="text" id="takipNo" name="takipNo" placeholder="Takip numaranızı girin" required>
+            <input type="submit" value="Sorgula">
+        </form>
+        <div class="info">
+            <p>Takip numaranızı kaybettiyseniz, lütfen destek ekibiyle iletişime geçin.</p>
+        </div>
+    </div>
 </body>
 </html>
