@@ -3,91 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
     <style>
-        *{
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
+            background-color: #f5f5f5;
         }
 
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
+        .navbar {
+            background-color: #343a40;
             color: white;
-            text-align: center;
-            padding: 14px 16px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
             text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
         }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
         table {
-            margin: 10px;
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
         }
-        /* Change the link color to #111 (black) on hover */
-        li a:hover {
-            background-color: #111;
+
+        thead {
+            background-color: #007BFF;
+            color: white;
         }
-        #customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+        }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+        th {
+            font-size: 16px;
+        }
 
-#customers tr:hover {background-color: #ddd;}
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
 
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
+        .btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+        }
     </style>
-    <title>Document</title>
 </head>
 <body>
-    <ul>
-        <li><a href="">Yeni Talep</a></li>
-        {% if admin %}
-            <li><a href="">Personelleri Düzenle</a></li>
-        {% endif %}
-    </ul>
-    <table id="customers">
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Personel</th>
-          <th>Definition</th>
-          <th>Edit&Delete</th>
-        </tr>
-        {% for i in requests %}
-            <tr>
-                <td>{{ i.name }}</td>
-                <td>{{ i.type }}</td>
-                <td>{{ i.personelId }}</td>
-                <td>{{ i.definition }}</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-        {% endfor %}
-        <script>
-        </script>
-    </table>
+    <div class="navbar">
+        <div>Dashboard</div>
+        <div>
+            <a href="#">Yeni Talep</a>
+            <a href="#">Personelleri Düzenle</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Personel</th>
+                    <th>Definition</th>
+                    <th>Edit &amp; Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Test</td>
+                    <td>sada</td>
+                    <td>0</td>
+                    <td>Sıkıntısız</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>saasdda</td>
+                    <td>1</td>
+                    <td>asdas</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Test</td>
+                    <td>asda</td>
+                    <td>1</td>
+                    <td>sdsd</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>adasdad</td>
+                    <td>sada</td>
+                    <td>0</td>
+                    <td>Sıkıntısız</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
