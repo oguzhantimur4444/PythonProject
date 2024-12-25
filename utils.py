@@ -5,6 +5,11 @@ class Base(ABC):
         self.id=id
     @abstractmethod
     def to_dict(self):pass
+    @classmethod
+    def from_dict(cls,data):
+        pass
+    def isMyId(self,id):
+        return id==self.id
 
 class User:
     def __init__(self, username, password):
