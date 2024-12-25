@@ -41,12 +41,14 @@
       color: #555;
     }
 
-    input, textarea {
-      margin-bottom: 15px;
+    input, textarea,select {
       padding: 10px;
+      font-size: 1em;
       border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     textarea {
@@ -72,18 +74,28 @@
 <body>
   <div class="form-container">
     <h1>Yeni Talep Oluştur</h1>
-    <form>
+    <form action="{{url_for('addRequestPage')}}" method="post">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter name">
+      <input type="text" id="name" name="name" minlength="5" maxlength="30" placeholder="Enter name" required>
       
       <label for="type">Type</label>
-      <input type="text" id="type" name="type" placeholder="Enter type">
+      <input type="text" id="type" name="type" minlength="5" maxlength="30" placeholder="Enter type" required>
       
-      <label for="personnel">Personel</label>
-      <input type="text" id="personnel" name="personnel" placeholder="Enter personnel">
+      
+      <label for="mail">Mail</label>
+      <input type="email" id="mail" name="mail" placeholder="Enter type" required>
+
+      <label for="personelId">Personel</label>
+      <select id="personelId" name="personelId" required>
+        {% for personel in personels %}
+            <option value="{{ personel.id }}" {% if personel.id == request.personelId %}selected{% endif %}>
+                {{ personel.username }}
+            </option>
+        {% endfor %}
+      </select>
       
       <label for="definition">Definition</label>
-      <textarea id="definition" name="definition" placeholder="Enter definition"></textarea>
+      <textarea id="definition" name="definition" minlength="1" maxlength="200" placeholder="Enter definition" required></textarea>
       
       <button type="submit">Talep Oluştur</button>
     </form>

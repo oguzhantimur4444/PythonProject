@@ -22,3 +22,6 @@ class SaveManager:
     def AddPersonel(self,uName,psw,brm,ytk):
         self.personeller.append(Personel(uName,psw,brm,ytk))
         self.Save()
+    def AddRequest(self,name,type,mail,personelId,definition):
+        self.requests.append(Request(name,type,mail,personelId,definition))
+        self.Save()
