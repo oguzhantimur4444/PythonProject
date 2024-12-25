@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Listeleme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .table-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            overflow-x: auto;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .edit {
+            background-color: #28a745;
+        }
+
+        .delete {
+            background-color: #dc3545;
+        }
+
+        .add-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h1>Personel Listesi</h1>
+        <a href="{{ url_for('addPersonel') }}" class="add-button">Yeni Personel Ekle</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Birim</th>
+                    <th>Yetki</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for personel in personel_list %}
+                <tr>
+                    <td>{{ personel.id }}</td>
+                    <td>{{ personel.username }}</td>
+                    <td>{{ personel.brim }}</td>
+                    <td>{{ personel.yetki }}</td>
+                    <td class="action-buttons">
+                        <a href="{{ url_for('editPersonel', id=personel.id) }}" class="edit">Edit</a>
+                        <a href="{{ url_for('deletePersonel', id=personel.id) }}" class="delete">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

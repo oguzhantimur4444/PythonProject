@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Düzenle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .info {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Personel Düzenle</h1>
+        <form action="{{ url_for('editPersonel') }}" method="post">
+            <label for="username">Kullanıcı Adı</label>
+            <input type="text" id="username" name="username" value="{{ personel.username }}" required>
+
+            <label for="password">Şifre</label>
+            <input type="password" id="password" name="password" placeholder="Yeni şifreyi girin">
+
+            <label for="brim">Birim</label>
+            <input type="text" id="brim" name="brim" value="{{ personel.brim }}" required>
+
+            <input type="submit" value="Kaydet">
+        </form>
+        <div class="info">
+            <p>Değişiklikler kaydedildikten sonra hemen etkili olacaktır.</p>
+        </div>
+    </div>
+</body>
+</html>
