@@ -5,14 +5,9 @@ sm=SaveManager()
 
 if len(sm.personeller) ==0:
     print("Bir root kullanici gereklidir")
-    psw="123"
+    psw=input(">>>")
     sm.AddPersonel("root",psw,"ANY",True)
 
-sm.AddPersonel("test","1234","Yok",False)
-sm.requests.append(Request(0,"Test","sada","",0,"Sıkıntısız"))
-sm.requests.append(Request(1,"1","saasdda","",1,"asdas"))
-sm.requests.append(Request(2,"Test","asda","",1,"sdsd"))
-sm.requests.append(Request(3,"adasdad","sada","",0,"Sıkıntısız"))
 app = Flask(__name__)
 app.secret_key="1234"
 

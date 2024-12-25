@@ -117,7 +117,7 @@
             </thead>
             <tbody>
                 {% for i in requests %}
-                <tr>
+                <tr id="{{i.id}}">
                     <td>{{ i.name }}</td>
                     <td>{{ i.type }}</td>
                     <td>{{ i.personelId }}</td>

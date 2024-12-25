@@ -5,7 +5,6 @@ class SaveManager:
     def __init__(self):
         self.personeller=[]
         self.requests=[]
-        self.mPersonelId=0
         self.Load()
     def Load(self):
         with open("save.json","r") as f:
@@ -21,6 +20,5 @@ class SaveManager:
         with open("save.json","w") as f:
             f.write(json.dumps(self.to_dict(),indent=4))
     def AddPersonel(self,uName,psw,brm,ytk):
-        self.personeller.append(Personel(self.mPersonelId,uName,psw,brm,ytk))
-        self.mPersonelId+=1
+        self.personeller.append(Personel(uName,psw,brm,ytk))
         self.Save()

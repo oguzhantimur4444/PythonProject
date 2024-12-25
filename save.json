@@ -1,4 +1,12 @@
 {
-    "personeller": [],
+    "personeller": [
+        {
+            "id": 0,
+            "username": "root",
+            "password": "123",
+            "brim": "ANY",
+            "yetki": true
+        }
+    ],
     "requests": []
 }

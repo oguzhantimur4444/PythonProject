@@ -20,7 +20,7 @@ class Request(Base):
         elif id>Request.maxID:
             Request.maxID=id+1
         elif Request.maxID==id:
-            id+=1
+            Request.maxID+=1
         
         super().__init__(id)
         self.name=name
@@ -41,16 +41,24 @@ class Request(Base):
     @classmethod
     def from_dict(cls, data):
         return cls(
-            id=data["id"],
             name=data["name"],
             type=data["type"],
             mail=data["mail"],
             personelId=data["personelId"],
-            definition=data["definition"]
+            definition=data["definition"],
+            id=data["id"]
         )
 
 class Personel(User,Base):
-    def __init__(self, id, username, password, brim, yetki):
+    maxID=0
+    def __init__(self, username, password, brim, yetki, id:int = None):
+        if id==None:
+            id=Personel.maxID
+            Personel.maxID+=1
+        elif id>Personel.maxID:
+            Personel.maxID=id+1
+        elif Personel.maxID==id:
+            Personel.maxID+=1
         Base.__init__(self,id)
         User.__init__(self,username,password)
         self.brim=brim
