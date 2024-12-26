@@ -6,6 +6,13 @@
             "password": "123",
             "brim": "ANY",
             "yetki": true
+        },
+        {
+            "id": 1,
+            "username": "sasda",
+            "password": "asdda",
+            "brim": "asdsda",
+            "yetki": false
         }
     ],
     "requests": [

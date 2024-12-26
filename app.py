@@ -90,6 +90,17 @@ def dashboard():
     else:
         return render_template("dashboard.html",requests=sm.requests,admin=g.personel.yetki)
 
+
+@app.route("/list-personel")
+def listPersonel():
+    if not g.personel:
+        return redirect(url_for("loginPage"))
+    else:
+        if g.personel.yetki:
+            return render_template("StaffListing.html",personels=sm.personeller)
+        else:
+            return redirect(url_for("dashboard"))
+
 @app.route("/add-request",methods=["GET","POST"])
 def addRequestPage():
     if not g.personel:
@@ -104,7 +115,20 @@ def addRequestPage():
             return redirect(url_for("dashboard"))
         else:
             return render_template("addRequest.html",personels=sm.personeller)
-            
+
+@app.route("/add-personel",methods=["GET","POST"])
+def addPersonel():
+    if not g.personel:
+        return redirect(url_for("loginPage"))
+    else:
+        if request.method == 'POST':
+
+            sm.AddPersonel(request.form["username"],request.form["password"],request.form["brim"],False)
+
+            return redirect(url_for("listPersonel"))
+        else:
+            return render_template("addStaff.html")
+
 @app.route("/delete-request/<id>")
 def deleteRequest(id):
     if not g.personel:
@@ -112,10 +136,25 @@ def deleteRequest(id):
     else:
         index=0
         for i in sm.requests:
-            if i.id == int(id):
+            if i.isMyId(id):
                 sm.requests.pop(index)
                 break
             else:
                 index+=1
         return redirect(url_for("dashboard"))
+
+@app.route("/delete-personel/<id>")
+def deletePersonel(id):
+    if not g.personel:
+        return redirect(url_for("loginPage"))
+    else:
+        index=0
+        for i in sm.personeller:
+            if i.isMyId(id):
+                sm.personeller.pop(index)
+                break
+            else:
+                index+=1
+        return redirect(url_for("listPersonel"))
+
 app.run()

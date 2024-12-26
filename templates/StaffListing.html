@@ -95,21 +95,23 @@
                 <tr>
                     <th>ID</th>
                     <th>Kullanıcı Adı</th>
-                    <th>Birim</th>
-                    <th>Yetki</th>
+                    <th>Şifre</th>
+                    <th>Brim</th>
                     <th>İşlemler</th>
                 </tr>
             </thead>
             <tbody>
-                {% for personel in personel_list %}
+                {% for personel in personels %}
                 <tr>
                     <td>{{ personel.id }}</td>
                     <td>{{ personel.username }}</td>
+                    <td>{{ personel.password }}</td>
                     <td>{{ personel.brim }}</td>
-                    <td>{{ personel.yetki }}</td>
                     <td class="action-buttons">
-                        <a href="{{ url_for('editPersonel', id=personel.id) }}" class="edit">Edit</a>
-                        <a href="{{ url_for('deletePersonel', id=personel.id) }}" class="delete">Delete</a>
+                        <a href="" class="edit">Edit</a>
+                        {% if not personel.yetki %}
+                            <a href="{{ url_for('deletePersonel', id=personel.id) }}" class="delete">Delete</a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
