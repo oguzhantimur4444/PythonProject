@@ -11,7 +11,7 @@ gonderici_sifre = "uqxgqfjqolpbspoy"  # Gmail uygulama şifresi
 
 def sendMail(alici_email,id):
     konu = "Teknik Servis"
-    metin = f"Talebinizi sorgulamak icin '{id}' sayısını sorgulayınız"
+    metin = f"Talebinizi sorgulamak icin '{id}' sayisini sorgulayiniz.".encode("")
 
     # E-posta oluşturma
     mesaj = MIMEMultipart()
@@ -20,7 +20,7 @@ def sendMail(alici_email,id):
     mesaj["Subject"] = konu
 
     # Mesaj içeriği ekleme
-    mesaj.attach(MIMEText(metin, "plain"))
+    mesaj.attach(MIMEText(metin, "plain","utf-8"))
 
     # SMTP sunucusuna bağlanma ve e-posta gönderme
     try:
@@ -28,7 +28,7 @@ def sendMail(alici_email,id):
             server.starttls()  # Güvenli bağlantı başlatma
             server.login(gonderici_email, gonderici_sifre)
             server.sendmail(gonderici_email, alici_email, mesaj.as_string())
-            print("E-posta başarıyla gönderildi!")
+            print("E-posta basariyla gönderildi!")
     except Exception as e:
         print("E-posta gönderilemedi:", str(e))
 
@@ -203,4 +203,7 @@ def editPersonel(id):
                     break
             return render_template("editStaff.html",personel=sm.personeller[length])
 
-app.run()
+#app.run()
+
+if __name__ == "__main__":
+    sendMail("oguzhantimur4444@gmail.com", 12345)
