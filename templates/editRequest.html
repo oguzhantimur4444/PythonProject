@@ -78,7 +78,7 @@
 <body>
     <div class="form-container">
         <h1>Request Düzenle</h1>
-        <form action="{{ url_for('editRequest') }}" method="post">
+        <form action="{{ url_for('editRequest',id=request.id) }}" method="post">
             <label for="name">Ad</label>
             <input type="text" id="name" name="name" value="{{ request.name }}" required>
 
@@ -90,8 +90,8 @@
 
             <label for="personelId">Personel</label>
             <select id="personelId" name="personelId" required>
-                {% for personel in personel_list %}
-                    <option value="{{ personel.id }}" {% if personel.id == request.personelId %}selected{% endif %}>
+                {% for personel in personels %}
+                    <option value="{{ personel.id }}" {% if personel.id == request_personel_id %} selected {% endif %}>
                         {{ personel.username }}
                     </option>
                 {% endfor %}

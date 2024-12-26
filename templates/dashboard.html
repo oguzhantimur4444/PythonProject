@@ -125,7 +125,7 @@
                     <td>{{ i.personelId }}</td>
                     <td>{{ i.definition }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('editRequest', id=i.id) }}" class="btn btn-primary">Edit</a>
                         <a href="{{ url_for('deleteRequest',id=i.id)}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

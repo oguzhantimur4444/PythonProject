@@ -1,28 +1,6 @@
 {
     "personeller": [
-        {
-            "id": 0,
-            "username": "root",
-            "password": "123",
-            "brim": "ANY",
-            "yetki": true
-        },
-        {
-            "id": 1,
-            "username": "sasda",
-            "password": "asdda",
-            "brim": "asdsda",
-            "yetki": false
-        }
     ],
     "requests": [
-        {
-            "id": 6,
-            "name": "An\u0131lh@n",
-            "type": "hgjghjghgjhghj",
-            "mail": "oguzhantimur4444@gmail.com",
-            "personelId": "0",
-            "definition": "gjgyggguyg"
-        }
     ]
 }

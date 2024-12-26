@@ -136,11 +136,12 @@ def deleteRequest(id):
     else:
         index=0
         for i in sm.requests:
-            if i.isMyId(id):
+            if i.isMyId(int(id)):
                 sm.requests.pop(index)
                 break
             else:
                 index+=1
+        sm.Save()
         return redirect(url_for("dashboard"))
 
 @app.route("/delete-personel/<id>")
@@ -150,11 +151,56 @@ def deletePersonel(id):
     else:
         index=0
         for i in sm.personeller:
-            if i.isMyId(id):
+            if i.isMyId(int(id)):
                 sm.personeller.pop(index)
                 break
             else:
                 index+=1
+        sm.Save()
         return redirect(url_for("listPersonel"))
+
+@app.route("/edit-request/<id>",methods=["GET","POST"])
+def editRequest(id):
+    if not g.personel:
+        return redirect(url_for("loginPage"))
+    else:
+        if request.method == 'POST':
+            for i in sm.requests:
+                if i.isMyId(int(id)):
+                    i.name=request.form["name"]
+                    i.mail=request.form["mail"]
+                    i.type=request.form["type"]
+                    i.personelId=request.form["personelId"]
+                    i.definition=request.form["definition"]
+            sm.Save()
+            return redirect(url_for("dashboard"))
+        else:
+            length=-1
+            for i in sm.requests:
+                length+=1
+                if i.isMyId(int(id)):
+                    break
+            return render_template("editRequest.html",personels=sm.personeller,request=sm.requests[length])
+
+@app.route("/edit-personel/<id>",methods=["GET","POST"])
+def editPersonel(id):
+    if not g.personel:
+        return redirect(url_for("loginPage"))
+    else:
+        if request.method == 'POST':
+            for i in sm.personeller:
+                if i.isMyId(int(id)):
+                    i.username=request.form["username"]
+                    i.password=request.form["password"]
+                    i.brim=request.form["brim"]
+            sm.Save()
+            return redirect(url_for("listPersonel"))
+        else:
+            length=-1
+            for i in sm.personeller:
+                length+=1
+                if i.isMyId(int(id)):
+                    break
+            return render_template("editStaff.html",personel=sm.personeller[length])
 
 app.run()

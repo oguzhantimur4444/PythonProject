@@ -78,12 +78,12 @@
 <body>
     <div class="form-container">
         <h1>Personel Düzenle</h1>
-        <form action="{{ url_for('editPersonel') }}" method="post">
+        <form action="{{ url_for('editPersonel',id=personel.id) }}" method="post">
             <label for="username">Kullanıcı Adı</label>
             <input type="text" id="username" name="username" value="{{ personel.username }}" required>
 
             <label for="password">Şifre</label>
-            <input type="password" id="password" name="password" placeholder="Yeni şifreyi girin">
+            <input type="password" id="password" name="password" value="{{ personel.password }}">
 
             <label for="brim">Birim</label>
             <input type="text" id="brim" name="brim" value="{{ personel.brim }}" required>

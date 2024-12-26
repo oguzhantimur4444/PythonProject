@@ -108,7 +108,7 @@
                     <td>{{ personel.password }}</td>
                     <td>{{ personel.brim }}</td>
                     <td class="action-buttons">
-                        <a href="" class="edit">Edit</a>
+                        <a href="{{ url_for('editPersonel', id=personel.id) }}" class="edit">Edit</a>
                         {% if not personel.yetki %}
                             <a href="{{ url_for('deletePersonel', id=personel.id) }}" class="delete">Delete</a>
                         {% endif %}
